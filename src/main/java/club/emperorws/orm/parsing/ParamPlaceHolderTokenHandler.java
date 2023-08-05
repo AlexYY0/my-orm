@@ -7,6 +7,7 @@ import club.emperorws.orm.reflection.MetaClass;
 import club.emperorws.orm.reflection.MetaObject;
 import club.emperorws.orm.type.JdbcType;
 import club.emperorws.orm.type.TypeHandlerRegistry;
+import club.emperorws.orm.util.ArrayUtil;
 import club.emperorws.orm.util.BuilderUtil;
 import club.emperorws.orm.util.CollectionUtil;
 
@@ -153,7 +154,7 @@ public class ParamPlaceHolderTokenHandler implements TokenHandler {
         //剩下的为其他属性
         for (int i = 1; i < pairs.length; i++) {
             String[] keyValue = pairs[i].split("=");
-            if (CollectionUtil.isNotEmpty(keyValue)) {
+            if (ArrayUtil.isNotEmpty(keyValue)) {
                 propertiesMap.put(keyValue[0], keyValue[1]);
             }
         }

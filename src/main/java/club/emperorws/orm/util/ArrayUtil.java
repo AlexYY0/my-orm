@@ -11,6 +11,50 @@ import java.util.Arrays;
  */
 public class ArrayUtil {
 
+    private ArrayUtil() {
+    }
+
+    /**
+     * 判断数据是否为空
+     *
+     * @param array 长度
+     * @return 数组对象为null或者长度为 0 时，返回 false
+     */
+    public static boolean isEmpty(Object[] array) {
+        return array == null || array.length == 0;
+    }
+
+    /**
+     * 判断数组是否不为空
+     *
+     * @param array 数组
+     * @return 数组对象内含有任意对象时返回 true
+     * @see ArrayUtils#isEmpty(Object[])
+     */
+    public static boolean isNotEmpty(Object[] array) {
+        return !isEmpty(array);
+    }
+
+    /**
+     * 是否包含{@code null}元素
+     *
+     * @param <T>   数组元素类型
+     * @param array 被检查的数组
+     * @return 是否包含{@code null}元素
+     * @since 3.0.7
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> boolean hasNull(T... array) {
+        if (isNotEmpty(array)) {
+            for (T element : array) {
+                if (ObjectUtil.isNull(element)) {
+                    return true;
+                }
+            }
+        }
+        return array == null;
+    }
+
     public static int hashCode(Object obj) {
         if (obj == null) {
             // for consistency with Arrays#hashCode() and Objects#hashCode()
